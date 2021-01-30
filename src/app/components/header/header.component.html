@@ -1,0 +1,46 @@
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 logo-wrapper">
+                <img src="../../../assets/logo.png" alt="Dunamenti Polgári Egyesület" class="logo-image">
+                <img src="../../../assets/logo_text.png" alt="Dunamenti Polgári Egyesület" class="logo-text-image">
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <div class="d-lg-none  d-md-block" style="padding: 10px;">Menü</div>
+            <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" [ngbCollapse]="isMenuCollapsed">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Hírek <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Egyesület</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Civil központ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Civil adatbázis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Hasznos információk</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Szolgáltatások</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/kapcsolat">Kapcsolat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Projektjeink</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

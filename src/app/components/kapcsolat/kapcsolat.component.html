@@ -1,0 +1,51 @@
+<h2>A TOLNA MEGYEI CIVIL KÖZÖSSÉGI SZOLGÁLTATÓ KÖZPONT IRODÁJA
+    <br>
+    FENNTARTÓ: Dunamenti Polgári Egyesület (DUPI)</h2>
+<p>Iroda címe: : 7100 Szekszárd, Széchenyi u. 21.</p>
+<p>Posta cím: 7130 Tolna, Mikszáth K. u. 9.</p>
+<p>E-mail: <a href="mailto:dupi.tolna@gmail.com">dupi.tolna@gmail.com</a></p>
+<p>Web: <a href="https://dupi.hu">https://dupi.hu</a></p>
+<p>Telefon: <a href="tel:+36305198289">+36 (30) 519-8289</a></p>
+<b>Iroda nyitvatartása:</b>
+<br>
+<p>Hétfő-csütörtök: 8<sup>00</sup>-16<sup>00</sup></p>
+<p>Péntek: 8<sup>00</sup>-14<sup>00</sup></p>
+<br>
+<p><b>Adószám:</b> 19285982-1-17</p>
+<br>
+<p><b>Szervezet nyilvántartási száma:</b> 17-02-2237</p>
+<h2>Vegye fel velünk a kapcsolatot online:</h2>
+
+<form>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <div class="form-group">
+                <label for="nev">Név (kötelező)</label>
+                <input class="form-control" type="text" required name="nev" id="nev" #nev="ngModel"
+                    [(ngModel)]="model.nev">
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <div class="form-group">
+                <label for="email">E-mail (kötelező)</label>
+                <input class="form-control" type="email" required name="email" id="email" #email="ngModel"
+                    [(ngModel)]="model.email">
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label for="targy">Tárgy</label>
+                <input class="form-control" type="text" name="targy" id="targy" #targy="ngModel"
+                    [(ngModel)]="model.targy">
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label for="uzenet">Üzenet</label>
+                <textarea class="form-control" name="uzenet" id="uzenet" #uzenet="ngModel" [(ngModel)]="model.uzenet"
+                    cols="30" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+</form>
+<a href="mailto:{{getMailText()}}">Küldés</a>
