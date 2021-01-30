@@ -16,14 +16,13 @@ import { config } from 'process';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDbgmZCx-pSyf6dTY0Y4mrzDHq65-34Cp0",
-  authDomain: "dupi-prod.firebaseapp.com",
-  databaseURL: "https://dupi-prod.firebaseio.com",
-  projectId: "dupi-prod",
-  storageBucket: "dupi-prod.appspot.com",
-  messagingSenderId: "91017376483",
-  appId: "1:91017376483:web:6f4c82ea3cdaf9af3d0bd6",
-  measurementId: "G-Z95V207Y7M"
+  apiKey: "AIzaSyCCGpgfwtVrpv64KMzwhyts4IN5IW-M8u8",
+  authDomain: "civiltolna.firebaseapp.com",
+  databaseURL: "https://civiltolna-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "civiltolna",
+  storageBucket: "civiltolna.appspot.com",
+  messagingSenderId: "818681267388",
+  appId: "1:818681267388:web:3c8ef9f7561861891abcb9"
 };
 
 @NgModule({
