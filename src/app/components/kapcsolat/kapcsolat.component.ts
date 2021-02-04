@@ -24,6 +24,6 @@ export class KapcsolatComponent implements OnInit {
   ngOnInit() {
   }
   getMailText(){
-    return "dupi.tolna@gmail.com?subject=" + encodeURIComponent(this.model.targy) + "&body=" + encodeURIComponent(this.model.uzenet);
+    return "civilkozpont.tolna@gmail.com?subject=" + encodeURIComponent(this.model.targy) + "&body=" + encodeURIComponent(this.model.uzenet);
   }
 }
