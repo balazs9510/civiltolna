@@ -14,6 +14,7 @@ import { BelepesComponent } from './components/private/belepes/belepes.component
 import { FormsModule } from '@angular/forms';
 import { config } from 'process';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { EgyesuletComponent } from './components/egyesulet/egyesulet.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCCGpgfwtVrpv64KMzwhyts4IN5IW-M8u8",
@@ -32,7 +33,8 @@ const firebaseConfig = {
     HirekComponent,
     FooterComponent,
     KapcsolatComponent,
-    BelepesComponent
+    BelepesComponent,
+    EgyesuletComponent
   ],
   imports: [
     BrowserModule,
