@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { config } from 'process';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { EgyesuletComponent } from './components/egyesulet/egyesulet.component';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCCGpgfwtVrpv64KMzwhyts4IN5IW-M8u8",
@@ -41,6 +42,7 @@ const firebaseConfig = {
     AppRoutingModule,
     NgbModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAnalyticsModule,
     AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     //AngularFireStorageModule,
