@@ -8,7 +8,8 @@ import { AuthGuard } from './core/auth.guard';
 
 
 const routes: Routes = [
-  { path: '', component: KapcsolatComponent },
+  { path: '', component: HirekComponent },
+  { path: 'hirek', component: HirekComponent },
   { path: 'kapcsolat', component: KapcsolatComponent },
   { path: 'egyesulet', component: EgyesuletComponent },
   { path: 'belepes', component: BelepesComponent },
