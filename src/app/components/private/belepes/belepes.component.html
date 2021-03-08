@@ -8,8 +8,17 @@
     <div class="col-6">
         <div class="form-group">
             <label for="">Jelszó</label>
-            <input class="form-control" type="password" [(ngModel)]="model.password" name="password" id="password" #password="ngModel">
+            <input class="form-control" type="password" [(ngModel)]="model.password" name="password" id="password"
+                #password="ngModel">
         </div>
     </div>
 </div>
-<button type="button" (click)="login()">Belépés</button>
+<div class="row" *ngIf="errorMessge">
+    <div class="col-12">
+        <div class="alert alert-danger">
+            <span class="error">{{errorMessge}}</span>
+        </div>
+    </div>
+
+</div>
+<button type="button" class="btn btn-success" (click)="login()">Belépés</button>

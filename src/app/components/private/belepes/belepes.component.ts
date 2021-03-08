@@ -17,19 +17,24 @@ export class BelepesComponent implements OnInit {
     email: '',
     password: ''
   };
+  errorMessge: string;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
   login() {
-    this.authService.login(this.model.email, this.model.password)
-      .then((res) => {
-        this.authService.updateUserData(res.user);
-        this.router.navigate(['/' + "hirek-kezelese"]);
-      })
-      .catch((err) => {
-        //self.errorMessage = err.message;
-      });
+    try {
+      this.authService.login(this.model.email, this.model.password)
+        .then((res) => {
+          this.authService.updateUserData(res.user);
+          this.router.navigate(['/' + "hirek-kezelese"]);
+        })
+        .catch((err) => {
+          this.errorMessge = err.message;
+        });
+    } catch (err) {
+      this.errorMessge = err.message;
+    }
   }
 }

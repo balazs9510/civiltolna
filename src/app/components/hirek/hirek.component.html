@@ -1,73 +1,22 @@
 <h1>Híreink</h1>
 <hr>
-<div class="col-12" *ngFor="let hir of $hirek| async">
-    <h2>
-        {{hir.title}}
-    </h2>
-    <div [innerHTML]="hir.content"></div>
-    <hr>
-</div>
+<div class="col-12" *ngIf="$hirek | async as newsList; else loading">
+    <div *ngFor="let news of newsList | paginate: { itemsPerPage: 3, currentPage: p }">
 
-<div class="col-12">
-    <h2>
-        Önkéntesség Magyarországi Éve 2021
-    </h2>
-    <p>
-        Az <b>Aegon Magyarország</b> és az <b>Önkéntes Központ Alapítvány</b>, mint a pályázat lebonyolítója, pályázatot
-        ír ki olyan
-        civil szervezetek, intézmények számára, akik az <b>Önkéntesség Magyarországi Éve 2021.</b> kapcsán.
-    </p>
-    <p>
-        <a href="http://www.onkentes.hu/hirek/aegon-magyarorszag-vissza-nem-teritendo-tamogatasara-palyazati-lehetoseg"
-            target="_blank">http://www.onkentes.hu/hirek/aegon-magyarorszag-vissza-nem-teritendo-tamogatasara-palyazati-lehetoseg</a>
-    </p>
+        <h1 class="hir_title">{{news.title}}</h1>
+        <div [innerHTML]="sanitize(news.content)"></div>
+        <div style="height: 10px;">
+            <span class="float-right">{{news.date | timestampToDate | date : 'yyyy.MM.dd.'}}</span>
+        </div>
+        <hr>
+    </div>
+    <div class="my-pagination">
+        <pagination-controls (pageChange)="p = $event" previousLabel="Előző" nextLabel="Következő">
+        </pagination-controls>
+    </div>
 </div>
-<hr>
-<div class="col-12">
-    <h2>
-        IV. Civil Véradás
-    </h2>
-    <img src="../../../assets/hirek/4.veradas.jpg" class="img-fluid">
-</div>
-<hr>
-<div class="col-12">
-    <h2>
-        Online konferencia a Kommunizmus Áldozatainak Emléknapja alkalmából
-    </h2>
-    <p>
-        A Gulágokban Elpusztultak Emlékének Megörökítésére Alapítvány a Kommunizmus Áldozatainak Emléknapja alkalmából,
-        <b> „Tebenned bíztunk eleitől fogva…” Egyházi személyek a GULAG fogságában címmel</b> online konferenciát
-        szervez. <br>
-        A konferencia időpontja: 2021. február 25., 9.00 – 19.00 óra.<br>
-        A csatolt <a href="../../../assets/meghivo.pdf">meghívó</a> tartalmazza a részletes programot.
-    </p>
-    <p>
-        <b>A konferencia az Alapítvány youtube csatornáján élőben követhető az alábbi linkre kattintva:</b><br>
-        <a href="https://www.youtube.com/channel/UC6WEwYp5SnOtqO7J1L2sCtQ"
-            target="_blank">https://www.youtube.com/channel/UC6WEwYp5SnOtqO7J1L2sCtQ</a>
-    </p>
-    <p>
-        További információk:<br>
-        <a href="http://www.gulagalapitvany.hu">www.gulagalapitvany.hu</a><br>
-        <a href="https://www.facebook.com/alapitvanygulag">https://www.facebook.com/alapitvanygulag</a>
-    </p>
-</div>
-<hr>
-<div class="col-12">
-    <h2>
-        A 2019. évi pályázatokhoz benyújtott aláírási címpéldányokat (aláírás-mintákat) is elfogadják!
-    </h2>
-    <p>
-        Ezúton tájékoztatjuk a tisztelt pályázókat, hogy a Bethlen Gábor Alapkezelő mind a 2020. évi normatív
-        (NEAN-KP-1-2020), mind a 2021. évi összevont (NEAO-KP-1-2021) és egyszerűsített (NEAG-KP-1-2021) pályázatok
-        támogatói okiratainak kibocsátása során elfogadja a 2019. évi pályázatokhoz benyújtott aláírási címpéldányokat
-        (aláírás-mintákat) is, amennyiben annak adataiban és aláírásképében változás nem történt.
-    </p>
-    <p>
-        A Civil Információs Portálon már a javított nyilatkozat szerepel: <br>
-        <a href="https://civil.info.hu/media/Nyilatkozat_korabban_benyujtott_dokumentumokrol_2021_02_04_4672.pdf">Nyilatkozat
-            link</a><br>
-    </p>
-    <p>
-    </p>
-</div>
+<ng-template #loading>
+    <div class="col-12">
+        <h2 class="loading">Az oldal töltődik<span>.</span><span>.</span><span>.</span></h2>
+    </div>
+</ng-template>

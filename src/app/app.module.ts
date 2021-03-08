@@ -20,6 +20,8 @@ import { HirekKezeleseComponent } from './components/private/hirek-kezelese/hire
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { TimestampToDatePipe } from './pipes/timestamp-to-date.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCCGpgfwtVrpv64KMzwhyts4IN5IW-M8u8",
@@ -45,6 +47,7 @@ const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     AppRoutingModule,
     NgbModule,
     AngularFireModule.initializeApp(firebaseConfig),

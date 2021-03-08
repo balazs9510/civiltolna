@@ -11,15 +11,19 @@
             <thead>
                 <tr>
                     <td>Cím</td>
-                    <td>Létrhozva</td>
+                    <td>Létrehozva</td>
                     <td>Műveletek</td>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let hir of pageModel.allData | async">
                     <td>{{hir.title}}</td>
-                    <td>{{hir.date | timestampToDate | date:'full'}}</td>
-                    <td>Szerkesztés | <span (click)="delete(hir)">Törlés</span></td>
+                    <td>{{hir.date | timestampToDate | date:'y. MM. dd. HH:mm'}}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary" (click)="edit(hir)">Szerkesztés</button> |
+                        <button type="button" class="btn btn-outline-danger"
+                            (click)="open(delete_modal, hir)">Törlés</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -56,6 +60,38 @@
                 </div>
             </div>
         </div>
-        <button type="button" (click)="save()">Létrehozás</button>
+        <div class="row">
+            <div class="col-2">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success" (click)="save()">
+                        {{pageModel.isEdit? Constants.Edit : Constants.Create}}
+                    </button>
+                </div>
+
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <button type="button" class="btn btn-warning" (click)="cancel()">{{Constants.Cancel}}</button>
+                </div>
+            </div>
+        </div>
     </form>
+</ng-template>
+
+<ng-template #delete_modal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Törlés</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <p>Biztos, hogy törlöd a hírt?</p>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="modal.close('Save click'); delete()">Törlés</button>
+        <button type="button" class="btn btn-danger" (click)="modal.close('')">Mégse</button>
+    </div>
 </ng-template>
