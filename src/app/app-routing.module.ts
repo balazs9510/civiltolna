@@ -4,6 +4,7 @@ import { EgyesuletComponent } from './components/egyesulet/egyesulet.component';
 import { HirekComponent } from './components/hirek/hirek.component';
 import { KapcsolatComponent } from './components/kapcsolat/kapcsolat.component';
 import { BelepesComponent } from './components/private/belepes/belepes.component';
+import { HirekKezeleseComponent } from './components/private/hirek-kezelese/hirek-kezelese.component';
 import { AuthGuard } from './core/auth.guard';
 
 
@@ -13,10 +14,8 @@ const routes: Routes = [
   { path: 'kapcsolat', component: KapcsolatComponent },
   { path: 'egyesulet', component: EgyesuletComponent },
   { path: 'belepes', component: BelepesComponent },
-  { path: 'privat', component: KapcsolatComponent, canActivate: [AuthGuard], children: [
-      { path: '', component: KapcsolatComponent, canActivate: [AuthGuard] },    
-    ]
-  },
+  { path: 'hirek-kezelese', component: HirekKezeleseComponent, canActivate: [AuthGuard] },
+
 ];
 
 @NgModule({

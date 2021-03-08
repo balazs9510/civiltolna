@@ -26,7 +26,7 @@ export class BelepesComponent implements OnInit {
     this.authService.login(this.model.email, this.model.password)
       .then((res) => {
         this.authService.updateUserData(res.user);
-        this.router.navigate(['/' + "privat"]);
+        this.router.navigate(['/' + "hirek-kezelese"]);
       })
       .catch((err) => {
         //self.errorMessage = err.message;

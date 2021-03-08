@@ -1,0 +1,38 @@
+<h2>Hírek kezelése</h2>
+<button type="button" (click)="create()">Létrehozás</button>
+
+<div class="col-12">
+    <div *ngIf="!model else createTemplate"></div>
+</div>
+<ng-template #createTemplate>
+    <form #editNews="ngForm">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="leiras">Cím *</label>
+                    <input type="text" [(ngModel)]="model.title" required id="cim" name="cim"
+                        class="form-control" #cim="ngModel">
+                    <div *ngIf="cim.invalid && (cim.dirty || cim.touched)" class="alert alert-danger">
+                        <div *ngIf="cim.errors.required">
+                            A cym megadása kötelező!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="datum">Tartalom *</label>
+                    <div class="input-group">
+                        <ckeditor [editor]="Editor" [(ngModel)]="model.content" required [config]="editorConfig" #content="ngModel" name="content"></ckeditor>
+                    </div>
+                    <div *ngIf="content.invalid && (content.dirty || content.touched)" class="alert alert-danger">
+                        <div *ngIf="content.errors.length> 0">
+                            A tartalom nem megfelelő!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" (click)="save()">Létrehozás</button>
+    </form>
+</ng-template>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FirebaseApp} from '@angular/fire'
+import { AuthService } from './core/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ export class AppComponent {
   /**
    *
    */
-  constructor() {
+  constructor(private authService: AuthService) 
+  {
+    this.authService.setLogggedIn();
   }
 }

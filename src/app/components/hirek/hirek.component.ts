@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Hir } from 'src/app/models/hir';
 
 @Component({
   selector: 'app-hirek',
@@ -6,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HirekComponent implements OnInit {
 
+  model: Hir;
+
   constructor() { }
 
   ngOnInit() {
   }
-
+  create(){
+    
+  }
 }

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 interface User {
@@ -18,13 +18,13 @@ interface User {
 export class AuthService {
 
   user: Observable<User>;
+  loggedIn = new Subject<boolean>();
 
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router
   ) {
-
     //// Get auth data, then get firestore user document || null
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -36,9 +36,11 @@ export class AuthService {
       })
     );
   }
+
   login(email: string, password: string): Promise<firebase.auth.UserCredential> {
     return this.afAuth.signInWithEmailAndPassword(email, password);
   }
+
   updateUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
 
@@ -48,14 +50,19 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL
     };
-
     return userRef.set(data, { merge: true });
   }
 
+  setLogggedIn() {
+    this.afAuth.authState.subscribe(us => {
+      this.loggedIn.next(us != null);
+    });
+
+  }
 
   signOut() {
     this.afAuth.signOut().then(() => {
-        this.router.navigate(['/']);
-      });
+      this.router.navigate(['/']);
+    });
   }
 }

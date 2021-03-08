@@ -16,6 +16,8 @@ import { config } from 'process';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { EgyesuletComponent } from './components/egyesulet/egyesulet.component';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { HirekKezeleseComponent } from './components/private/hirek-kezelese/hirek-kezelese.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCCGpgfwtVrpv64KMzwhyts4IN5IW-M8u8",
@@ -35,7 +37,8 @@ const firebaseConfig = {
     FooterComponent,
     KapcsolatComponent,
     BelepesComponent,
-    EgyesuletComponent
+    EgyesuletComponent,
+    HirekKezeleseComponent
   ],
   imports: [
     BrowserModule,
@@ -43,10 +46,11 @@ const firebaseConfig = {
     NgbModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAnalyticsModule,
-    AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
+    AngularFirestoreModule.enablePersistence({synchronizeTabs: true}), // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     //AngularFireStorageModule,
-    FormsModule
+    FormsModule,
+    CKEditorModule
   ],
 
   providers: [],
