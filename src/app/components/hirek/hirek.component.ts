@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Hir } from 'src/app/models/hir';
+import { HirService } from 'src/app/services/hir-service.service';
 
 @Component({
   selector: 'app-hirek',
   templateUrl: './hirek.component.html',
 })
 export class HirekComponent implements OnInit {
+  $hirek : Observable<Hir[]>;
 
-  model: Hir;
-
-  constructor() { }
+  constructor(private service: HirService) { }
 
   ngOnInit() {
-  }
-  create(){
-    
+    this.$hirek = this.service.getItems();
   }
 }

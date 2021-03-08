@@ -1,5 +1,13 @@
 <h1>Híreink</h1>
 <hr>
+<div class="col-12" *ngFor="let hir of $hirek| async">
+    <h2>
+        {{hir.title}}
+    </h2>
+    <div [innerHTML]="hir.content"></div>
+    <hr>
+</div>
+
 <div class="col-12">
     <h2>
         Önkéntesség Magyarországi Éve 2021

@@ -17,5 +17,7 @@ export class HeaderComponent implements OnInit {
       this.isPublic = !r;
     })
   }
-
+  signOut(){
+    this.authService.signOut();
+  }
 }

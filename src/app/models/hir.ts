@@ -1,7 +1,16 @@
 import firebase from "firebase";
+import { BaseEntity } from "./base-entity";
 
-export class Hir {
+export class Hir extends BaseEntity {
     title: string;
     content: string;
-    date: firebase.firestore.Timestamp;
+
+    /**
+     *
+     */
+    constructor() {
+        super();
+        this.title = '';
+        this.content = '';
+    }
 }

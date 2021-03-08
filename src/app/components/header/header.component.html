@@ -46,5 +46,6 @@
     <ng-template #adminMenu>
         <a class="nav-item nav-link" [routerLink]="['hirek-kezelese']" routerLinkActive="active">Hírek
             kezelése <span class="sr-only">(jelenlegi)</span></a>
+        <a class="nav-item nav-link" (click)="signOut()">Kilépés</a>
     </ng-template>
 </header>

@@ -1,20 +1,42 @@
 <h2>Hírek kezelése</h2>
-<button type="button" (click)="create()">Létrehozás</button>
 
-<div class="col-12">
-    <div *ngIf="!model else createTemplate"></div>
+<div *ngIf="!pageModel.editData else createTemplate">
+    <div class="col-12">
+        <div class="form-group">
+            <button type="button" class="btn btn-success" (click)="create()">Új hír hozzáadása</button>
+        </div>
+    </div>
+    <div class="col-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>Cím</td>
+                    <td>Létrhozva</td>
+                    <td>Műveletek</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let hir of pageModel.allData | async">
+                    <td>{{hir.title}}</td>
+                    <td>{{hir.date | timestampToDate | date:'full'}}</td>
+                    <td>Szerkesztés | <span (click)="delete(hir)">Törlés</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+
 <ng-template #createTemplate>
     <form #editNews="ngForm">
         <div class="row">
             <div class="col-12">
                 <div class="form-group">
                     <label for="leiras">Cím *</label>
-                    <input type="text" [(ngModel)]="model.title" required id="cim" name="cim"
+                    <input type="text" [(ngModel)]="pageModel.editData.title" required id="cim" name="cim"
                         class="form-control" #cim="ngModel">
                     <div *ngIf="cim.invalid && (cim.dirty || cim.touched)" class="alert alert-danger">
                         <div *ngIf="cim.errors.required">
-                            A cym megadása kötelező!
+                            A cím megadása kötelező!
                         </div>
                     </div>
                 </div>
@@ -23,7 +45,8 @@
                 <div class="form-group">
                     <label for="datum">Tartalom *</label>
                     <div class="input-group">
-                        <ckeditor [editor]="Editor" [(ngModel)]="model.content" required [config]="editorConfig" #content="ngModel" name="content"></ckeditor>
+                        <ckeditor [editor]="Editor" [(ngModel)]="pageModel.editData.content" required
+                            [config]="editorConfig" #content="ngModel" name="content"></ckeditor>
                     </div>
                     <div *ngIf="content.invalid && (content.dirty || content.touched)" class="alert alert-danger">
                         <div *ngIf="content.errors.length> 0">

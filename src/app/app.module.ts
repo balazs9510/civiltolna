@@ -18,6 +18,8 @@ import { EgyesuletComponent } from './components/egyesulet/egyesulet.component';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { HirekKezeleseComponent } from './components/private/hirek-kezelese/hirek-kezelese.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { TimestampToDatePipe } from './pipes/timestamp-to-date.pipe';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCCGpgfwtVrpv64KMzwhyts4IN5IW-M8u8",
@@ -38,7 +40,8 @@ const firebaseConfig = {
     KapcsolatComponent,
     BelepesComponent,
     EgyesuletComponent,
-    HirekKezeleseComponent
+    HirekKezeleseComponent,
+    TimestampToDatePipe,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,7 @@ const firebaseConfig = {
     AngularFireAnalyticsModule,
     AngularFirestoreModule.enablePersistence({synchronizeTabs: true}), // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    //AngularFireStorageModule,
+    AngularFireStorageModule,
     FormsModule,
     CKEditorModule
   ],
