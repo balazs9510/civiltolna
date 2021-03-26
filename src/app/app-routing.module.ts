@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EgyesuletComponent } from './components/egyesulet/egyesulet.component';
+import { HasznosInformaciokComponent } from './components/hasznos-informaciok/hasznos-informaciok.component';
 import { HirekComponent } from './components/hirek/hirek.component';
 import { KapcsolatComponent } from './components/kapcsolat/kapcsolat.component';
 import { BelepesComponent } from './components/private/belepes/belepes.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'kapcsolat', component: KapcsolatComponent },
   { path: 'egyesulet', component: EgyesuletComponent },
   { path: 'belepes', component: BelepesComponent },
+  { path: 'hasznos-informaciok', component: HasznosInformaciokComponent },
   { path: 'hirek-kezelese', component: HirekKezeleseComponent, canActivate: [AuthGuard] },
 
 ];

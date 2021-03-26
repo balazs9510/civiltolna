@@ -21,6 +21,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { TimestampToDatePipe } from './pipes/timestamp-to-date.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HasznosInformaciokComponent } from './components/hasznos-informaciok/hasznos-informaciok.component';
 
 
 const firebaseConfig = {
@@ -44,6 +45,7 @@ const firebaseConfig = {
     EgyesuletComponent,
     HirekKezeleseComponent,
     TimestampToDatePipe,
+    HasznosInformaciokComponent,
   ],
   imports: [
     BrowserModule,
