@@ -14,12 +14,12 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Use firebase project
-        run: ./node_modules/.bin/firebase use civiltolna --token "$FIREBASE_SERVICE_ACCOUNT_CIVILTOLNA"
+        run: ./node_modules/.bin/firebase use civiltolna --token "$FIREBASE_TOKEN"
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CIVILTOLNA }}
       - name: Build
         run: npm run build-prod
       - name: Host
-        run: ./node_modules/.bin/firebase deploy --only hosting --token "$FIREBASE_SERVICE_ACCOUNT_CIVILTOLNA"
+        run: ./node_modules/.bin/firebase deploy --only hosting --token "$FIREBASE_TOKEN"
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CIVILTOLNA }}
