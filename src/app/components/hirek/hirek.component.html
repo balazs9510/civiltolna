@@ -4,7 +4,9 @@
     <div *ngFor="let news of newsList | paginate: { itemsPerPage: 3, currentPage: p }">
 
         <h1 class="hir_title">{{news.title}}</h1>
-        <div [innerHTML]="sanitize(news.content)"></div>
+        <div class="hir-body" [innerHTML]="sanitize(news.content)"
+        #collapse="ngbCollapse" [(ngbCollapse)]="news.id != currentOpenedHirId"></div>
+        <div (click)="setCurrentOpen(news.id)">Olvass tovább >></div>
         <div style="height: 10px;">
             <span class="float-right">{{news.date | timestampToDate | date : 'yyyy.MM.dd.'}}</span>
         </div>

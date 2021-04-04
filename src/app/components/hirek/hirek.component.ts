@@ -12,12 +12,18 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class HirekComponent implements OnInit {
   $hirek: Observable<Hir[]>;
   p: any;
+  currentOpenedHirId: string;
+
   constructor(private service: HirService, private _sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.$hirek = this.service.getItems({ order: [{ property: "date", direction: OrderDirection.Desc }] });
   }
+
   sanitize(html) {
     return this._sanitizer.bypassSecurityTrustHtml(html);
+  }
+  setCurrentOpen(id: string){
+    this.currentOpenedHirId = id;
   }
 }
