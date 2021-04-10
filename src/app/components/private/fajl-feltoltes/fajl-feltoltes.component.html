@@ -1,0 +1,68 @@
+<h2>Fájlok kezelése</h2>
+
+<div *ngIf="!pageModel.editData else createTemplate">
+    <div class="col-12">
+        <div class="form-group">
+            <button type="button" class="btn btn-success" (click)="create()">Fájl feltöltése</button>
+        </div>
+    </div>
+    <div class="col-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>Fájl név</td>
+                    <td>Létrehozva</td>
+                    <td>Link</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fileUpload of pageModel.allData | async">
+                    <td>{{fileUpload.path.replace('file-uploads/', '')}}</td>
+                    <td>{{fileUpload.date | timestampToDate | date:'y. MM. dd. HH:mm'}}</td>
+                    <td>
+                        <a [href]="getLink(fileUpload) | async" target="_blank">{{getLink(fileUpload)| async}}</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #createTemplate>
+    <form #editNews="ngForm">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="path">Mappa</label>
+                    <input type="text" [(ngModel)]="pageModel.editData.path" id="path" name="path" class="form-control"
+                    #path="ngModel">
+                    <span>A mező kitöltése nem kötelező. Ha üresen van hagyva, a fájl a gyökér könyvtárba kerül. Több mappába is lehet ágyazni, pl.: Fomappa/Almappa</span>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="file">Fájl *</label>
+                    <input type="file" class="form-control-file" id="file" name="file" required
+                        (change)="changeFile($event)">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success" (click)="save($event)">
+                        {{pageModel.isEdit? Constants.Edit : Constants.Create}}
+                    </button>
+                </div>
+
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <button type="button" class="btn btn-warning" (click)="cancel()">{{Constants.Cancel}}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>

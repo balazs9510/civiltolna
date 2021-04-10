@@ -1,13 +1,13 @@
 <app-header></app-header>
 <div class="container" style="padding-bottom: 70px;">
-    <div class="row mt-1">
+    <div class="row mt-1" *ngIf="isPublic else adminTemplate">
         <div class="col-sm-12 col-md-2">
             <div>
                 <img src="../assets/footer/bethlen_gabor.png" alt="Bethlen Gábor" class="side-panel-image">
             </div>
             <div>
                 <img src="../assets/footer/nea.png" alt="Nemzeti Együttműködési Alap" class="side-panel-image">
-            </div> 
+            </div>
             <div>
                 <img src="../assets/footer/miniszterelnokseg.png" alt="Miniszterelnökség" class="side-panel-image">
             </div>
@@ -16,9 +16,15 @@
             <router-outlet></router-outlet>
         </div>
         <div class="col-sm-12 col-md-2">
-
         </div>
     </div>
-
 </div>
 <app-footer></app-footer>
+
+<ng-template #adminTemplate>
+    <div class="row mt-1">
+        <div class="col-12">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</ng-template>

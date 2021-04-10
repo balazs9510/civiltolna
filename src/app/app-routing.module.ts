@@ -5,6 +5,7 @@ import { HasznosInformaciokComponent } from './components/hasznos-informaciok/ha
 import { HirekComponent } from './components/hirek/hirek.component';
 import { KapcsolatComponent } from './components/kapcsolat/kapcsolat.component';
 import { BelepesComponent } from './components/private/belepes/belepes.component';
+import { FajlFeltoltesComponent } from './components/private/fajl-feltoltes/fajl-feltoltes.component';
 import { HirekKezeleseComponent } from './components/private/hirek-kezelese/hirek-kezelese.component';
 import { AuthGuard } from './core/auth.guard';
 
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'belepes', component: BelepesComponent },
   { path: 'hasznos-informaciok', component: HasznosInformaciokComponent },
   { path: 'hirek-kezelese', component: HirekKezeleseComponent, canActivate: [AuthGuard] },
-
+  { path: 'fajl-feltoltes', component: FajlFeltoltesComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

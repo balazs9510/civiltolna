@@ -8,11 +8,17 @@ import { AuthService } from './core/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  /**
-   *
-   */
+  isPublic = true;
+
   constructor(private authService: AuthService) 
   {
     this.authService.setLogggedIn();
   }
+
+  ngOnInit() {
+    this.authService.loggedIn.subscribe(r =>{
+      this.isPublic = !r;
+    })
+  }
+  
 }

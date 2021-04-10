@@ -22,7 +22,11 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { TimestampToDatePipe } from './pipes/timestamp-to-date.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HasznosInformaciokComponent } from './components/hasznos-informaciok/hasznos-informaciok.component';
-
+import { FajlFeltoltesComponent } from './components/private/fajl-feltoltes/fajl-feltoltes.component';
+import { NgxLoadingModule } from 'ngx-loading';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCCGpgfwtVrpv64KMzwhyts4IN5IW-M8u8",
@@ -46,8 +50,10 @@ const firebaseConfig = {
     HirekKezeleseComponent,
     TimestampToDatePipe,
     HasznosInformaciokComponent,
+    FajlFeltoltesComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     NgxPaginationModule,
     AppRoutingModule,
@@ -58,7 +64,10 @@ const firebaseConfig = {
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule,
     FormsModule,
-    CKEditorModule
+    CKEditorModule,
+    NgxLoadingModule.forRoot({}),
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
 
   providers: [],
