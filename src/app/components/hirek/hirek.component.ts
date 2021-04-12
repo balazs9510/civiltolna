@@ -18,8 +18,4 @@ export class HirekComponent implements OnInit {
   ngOnInit() {
     this.$hirek = this.service.getItems({ order: [{ property: "date", direction: OrderDirection.Desc }] });
   }
-
-  sanitize(html) {
-    return this._sanitizer.bypassSecurityTrustHtml(html);
-  }
 }

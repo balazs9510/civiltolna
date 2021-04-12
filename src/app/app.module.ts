@@ -27,6 +27,8 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { HasznosInformaciokKezeleseComponent } from './components/private/hasznos-informaciok-kezelese/hasznos-informaciok-kezelese.component';
+import { SanitizePipe } from './pipes/sanitize.pipe';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCCGpgfwtVrpv64KMzwhyts4IN5IW-M8u8",
@@ -51,6 +53,8 @@ const firebaseConfig = {
     TimestampToDatePipe,
     HasznosInformaciokComponent,
     FajlFeltoltesComponent,
+    HasznosInformaciokKezeleseComponent,
+    SanitizePipe,
   ],
   imports: [
     CommonModule,

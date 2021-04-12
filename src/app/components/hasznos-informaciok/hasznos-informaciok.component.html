@@ -4,11 +4,8 @@
     <div class="col-12">
         <h2>Hasznos információk</h2>
     </div>
-    <div class="col-12">
-        <div class="form-group"><a
-                href="https://firebasestorage.googleapis.com/v0/b/civiltolna.appspot.com/o/commond-docs%2F26_1_szervezetek_20200124-1.pdf?alt=media&token=2aaffc8c-cb2f-4044-bf21-4ac6e98194ac"
-                target="_blank">Jogosultság
-                az szja 1%-ára
-            </a></div>
+    <div class="col-12" *ngIf="info">
+        <div [innerHTML]="info.content | sanitize"></div>
     </div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
 </div>

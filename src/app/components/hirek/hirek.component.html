@@ -4,7 +4,7 @@
     <div *ngFor="let news of newsList | paginate: { itemsPerPage: 5, currentPage: p }">
 
         <h1 class="hir_title">{{news.title}}</h1>
-        <div class="hir-body" [innerHTML]="sanitize(news.content)" #collapse="ngbCollapse"
+        <div class="hir-body" [innerHTML]="news.content | sanitize" #collapse="ngbCollapse"
             [(ngbCollapse)]="!news.isOpened"></div>
         <div (click)="news.isOpened = !news.isOpened">
             <span style="cursor: pointer;">

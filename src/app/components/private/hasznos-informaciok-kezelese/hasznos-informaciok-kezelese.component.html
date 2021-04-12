@@ -1,0 +1,45 @@
+<h2>Hasznos információk kezelése</h2>
+
+<div *ngIf="!pageModel.editData else createTemplate">
+    <div class="col-12">
+        <div class="form-group">
+            <button type="button" class="btn btn-success" (click)="edit()">Szerkesztés</button>
+        </div>
+    </div>
+    <div class="col-12" *ngIf="hasznosInformacio">
+        <div [innerHTML]="hasznosInformacio.content | sanitize"></div>
+    </div>
+</div>
+
+<ng-template #createTemplate>
+    <form #editNews="ngForm">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="datum">Tartalom *</label>
+                    <div class="input-group">
+                        <ckeditor [editor]="Editor" [(ngModel)]="pageModel.editData.content" required
+                            [config]="editorConfig" #content="ngModel" name="content"></ckeditor>
+                    </div>
+                    <div *ngIf="content.invalid && (content.dirty || content.touched)" class="alert alert-danger">
+                        <div *ngIf="content.errors.length> 0">
+                            A tartalom nem megfelelő!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success" (click)="save()">{{Constants.Edit}} </button>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <button type="button" class="btn btn-warning" (click)="cancel()">{{Constants.Cancel}}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</ng-template>
