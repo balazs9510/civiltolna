@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CivilAdatbazisComponent } from './components/civil-adatbazis/civil-adatbazis.component';
 import { CivilkozpontComponent } from './components/civilkozpont/civilkozpont.component';
 import { EgyesuletComponent } from './components/egyesulet/egyesulet.component';
 import { HasznosInformaciokComponent } from './components/hasznos-informaciok/hasznos-informaciok.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'belepes', component: BelepesComponent },
   { path: 'hasznos-informaciok', component: HasznosInformaciokComponent },
   { path: 'civilkozpont', component: CivilkozpontComponent },
+  { path: 'civil-adatbazis', component: CivilAdatbazisComponent },
   { path: 'hirek-kezelese', component: HirekKezeleseComponent, canActivate: [AuthGuard] },
   { path: 'fajl-feltoltes', component: FajlFeltoltesComponent, canActivate: [AuthGuard] },
   { path: 'hasznos-informaciok-kezelese', component: HasznosInformaciokKezeleseComponent, canActivate: [AuthGuard] },

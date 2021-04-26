@@ -30,6 +30,7 @@ import { CommonModule } from '@angular/common';
 import { HasznosInformaciokKezeleseComponent } from './components/private/hasznos-informaciok-kezelese/hasznos-informaciok-kezelese.component';
 import { SanitizePipe } from './pipes/sanitize.pipe';
 import { CivilkozpontComponent } from './components/civilkozpont/civilkozpont.component';
+import { CivilAdatbazisComponent } from './components/civil-adatbazis/civil-adatbazis.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCCGpgfwtVrpv64KMzwhyts4IN5IW-M8u8",
@@ -57,6 +58,7 @@ const firebaseConfig = {
     HasznosInformaciokKezeleseComponent,
     SanitizePipe,
     CivilkozpontComponent,
+    CivilAdatbazisComponent,
   ],
   imports: [
     CommonModule,
