@@ -10,6 +10,7 @@ import { BelepesComponent } from './components/private/belepes/belepes.component
 import { FajlFeltoltesComponent } from './components/private/fajl-feltoltes/fajl-feltoltes.component';
 import { HasznosInformaciokKezeleseComponent } from './components/private/hasznos-informaciok-kezelese/hasznos-informaciok-kezelese.component';
 import { HirekKezeleseComponent } from './components/private/hirek-kezelese/hirek-kezelese.component';
+import { UserAgreementComponent } from './components/user-agreement/user-agreement.component';
 import { AuthGuard } from './core/auth.guard';
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'hasznos-informaciok', component: HasznosInformaciokComponent },
   { path: 'civilkozpont', component: CivilkozpontComponent },
   { path: 'civil-adatbazis', component: CivilAdatbazisComponent },
+  { path: 'user-agreement', component: UserAgreementComponent },
   { path: 'hirek-kezelese', component: HirekKezeleseComponent, canActivate: [AuthGuard] },
   { path: 'fajl-feltoltes', component: FajlFeltoltesComponent, canActivate: [AuthGuard] },
   { path: 'hasznos-informaciok-kezelese', component: HasznosInformaciokKezeleseComponent, canActivate: [AuthGuard] },

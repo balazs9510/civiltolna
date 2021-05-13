@@ -27,6 +27,7 @@
     "@ckeditor/ckeditor5-build-classic": "^26.0.0",
     "@ckeditor/ckeditor5-upload": "^26.0.0",
     "@ng-bootstrap/ng-bootstrap": "^5.3.1",
+    "angular2-cookie-law": "^7.0.1",
     "bootstrap": "^4.5.2",
     "firebase": "^7.24.0",
     "ngx-loading": "^8.0.0",

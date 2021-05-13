@@ -31,6 +31,8 @@ import { HasznosInformaciokKezeleseComponent } from './components/private/haszno
 import { SanitizePipe } from './pipes/sanitize.pipe';
 import { CivilkozpontComponent } from './components/civilkozpont/civilkozpont.component';
 import { CivilAdatbazisComponent } from './components/civil-adatbazis/civil-adatbazis.component';
+import { CookieLawModule } from 'angular2-cookie-law';
+import { UserAgreementComponent } from './components/user-agreement/user-agreement.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCCGpgfwtVrpv64KMzwhyts4IN5IW-M8u8",
@@ -59,6 +61,7 @@ const firebaseConfig = {
     SanitizePipe,
     CivilkozpontComponent,
     CivilAdatbazisComponent,
+    UserAgreementComponent,
   ],
   imports: [
     CommonModule,
@@ -76,6 +79,7 @@ const firebaseConfig = {
     NgxLoadingModule.forRoot({}),
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+    CookieLawModule
   ],
 
   providers: [],
