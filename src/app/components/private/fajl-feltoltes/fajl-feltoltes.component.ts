@@ -47,6 +47,10 @@ export class FajlFeltoltesComponent implements OnInit {
       this.toastr.warning('Töltsön fel egy fájlt!');
       return;
     }
+    if (this.uploadFile.size > 25 * 1024 * 1024){
+      this.toastr.warning('A fájl méret meghaladja a 25 megabájtot!');
+      return;
+    }
     this.loading = true;
     let uploadPath = `file-uploads/`;
     let editData = this.pageModel.editData;

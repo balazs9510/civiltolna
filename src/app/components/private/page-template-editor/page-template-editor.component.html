@@ -1,4 +1,4 @@
-<h2>Hasznos információk kezelése</h2>
+<h2>{{pageTitle}}</h2>
 
 <div *ngIf="!pageModel.editData else createTemplate">
     <div class="col-12">
@@ -6,8 +6,8 @@
             <button type="button" class="btn btn-success" (click)="edit()">Szerkesztés</button>
         </div>
     </div>
-    <div class="col-12" *ngIf="hasznosInformacio">
-        <div [innerHTML]="hasznosInformacio.content | sanitize"></div>
+    <div class="col-12" *ngIf="pageTemplate">
+        <div [innerHTML]="pageTemplate.content | sanitize"></div>
     </div>
 </div>
 

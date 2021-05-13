@@ -27,12 +27,15 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { HasznosInformaciokKezeleseComponent } from './components/private/hasznos-informaciok-kezelese/hasznos-informaciok-kezelese.component';
 import { SanitizePipe } from './pipes/sanitize.pipe';
 import { CivilkozpontComponent } from './components/civilkozpont/civilkozpont.component';
 import { CivilAdatbazisComponent } from './components/civil-adatbazis/civil-adatbazis.component';
 import { CookieLawModule } from 'angular2-cookie-law';
 import { UserAgreementComponent } from './components/user-agreement/user-agreement.component';
+import { HirlevelekComponent } from './components/hirlevelek/hirlevelek.component';
+import { PageTemplateEditorComponent } from './components/private/page-template-editor/page-template-editor.component';
+import { PageTemplateHandlingComponent } from './components/private/page-template-handling/page-template-handling.component';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCCGpgfwtVrpv64KMzwhyts4IN5IW-M8u8",
@@ -57,11 +60,13 @@ const firebaseConfig = {
     TimestampToDatePipe,
     HasznosInformaciokComponent,
     FajlFeltoltesComponent,
-    HasznosInformaciokKezeleseComponent,
     SanitizePipe,
     CivilkozpontComponent,
     CivilAdatbazisComponent,
     UserAgreementComponent,
+    HirlevelekComponent,
+    PageTemplateEditorComponent,
+    PageTemplateHandlingComponent
   ],
   imports: [
     CommonModule,

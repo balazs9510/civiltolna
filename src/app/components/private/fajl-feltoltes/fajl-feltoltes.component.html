@@ -32,6 +32,9 @@
     <form #editNews="ngForm">
         <div class="row">
             <div class="col-12">
+               <span class="label label-info">Maximum 25 megabájt méretű fájl tölthető fel!</span>
+            </div>
+            <div class="col-12">
                 <div class="form-group">
                     <label for="path">Mappa</label>
                     <input type="text" [(ngModel)]="pageModel.editData.path" id="path" name="path" class="form-control"
