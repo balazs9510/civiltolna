@@ -45,6 +45,7 @@ export class PageTemplateEditorComponent implements OnInit {
     this.pageModel.editData = this.pageTemplate;
     this.pageModel.isEdit = true;
   }
+  
   save() {
     if (!this.pageModel.editData.content) {
       this.toastr.warning("Töltse ki a tartalmat!")
@@ -61,5 +62,4 @@ export class PageTemplateEditorComponent implements OnInit {
     this.pageModel.editData = null;
     this.pageModel.isEdit = false;
   }
-
 }

@@ -7,6 +7,7 @@ import { HasznosInformaciokComponent } from './components/hasznos-informaciok/ha
 import { HirekComponent } from './components/hirek/hirek.component';
 import { HirlevelekComponent } from './components/hirlevelek/hirlevelek.component';
 import { KapcsolatComponent } from './components/kapcsolat/kapcsolat.component';
+import { OkosfuzetComponent } from './components/okosfuzet/okosfuzet.component';
 import { BelepesComponent } from './components/private/belepes/belepes.component';
 import { FajlFeltoltesComponent } from './components/private/fajl-feltoltes/fajl-feltoltes.component';
 import { HirekKezeleseComponent } from './components/private/hirek-kezelese/hirek-kezelese.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'civilkozpont', component: CivilkozpontComponent },
   { path: 'civil-adatbazis', component: CivilAdatbazisComponent },
   { path: 'hirlevelek', component: HirlevelekComponent },
+  { path: 'okosfuzet', component: OkosfuzetComponent },
   { path: 'user-agreement', component: UserAgreementComponent },
   { path: 'hirek-kezelese', component: HirekKezeleseComponent, canActivate: [AuthGuard] },
   { path: 'fajl-feltoltes', component: FajlFeltoltesComponent, canActivate: [AuthGuard] },

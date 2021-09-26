@@ -35,6 +35,7 @@ import { UserAgreementComponent } from './components/user-agreement/user-agreeme
 import { HirlevelekComponent } from './components/hirlevelek/hirlevelek.component';
 import { PageTemplateEditorComponent } from './components/private/page-template-editor/page-template-editor.component';
 import { PageTemplateHandlingComponent } from './components/private/page-template-handling/page-template-handling.component';
+import { OkosfuzetComponent } from './components/okosfuzet/okosfuzet.component';
 
 
 const firebaseConfig = {
@@ -66,7 +67,8 @@ const firebaseConfig = {
     UserAgreementComponent,
     HirlevelekComponent,
     PageTemplateEditorComponent,
-    PageTemplateHandlingComponent
+    PageTemplateHandlingComponent,
+    OkosfuzetComponent
   ],
   imports: [
     CommonModule,

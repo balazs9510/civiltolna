@@ -5,9 +5,11 @@ export class Constants {
 
     public static readonly HirlevelPageId = "hirlevel";
     public static readonly HasznosInformaciokPageId = "hasznos-informaciok";
+    public static readonly OkosFuzetPageId = "okosfuzet";
 
     public static readonly PageIdTilteMapping = {
         "hirlevel" : 'Hírlevelek kezelése',
-        "hasznos-informaciok": 'Hasznos információk kezelése'
+        "hasznos-informaciok": 'Hasznos információk kezelése',
+        "okosfuzet" : "Okosfüzet"
     }
 }
