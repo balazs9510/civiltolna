@@ -24,20 +24,26 @@
                         <a class="nav-link" href="/civilkozpont">Civil központ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/civil-adatbazis">Civil adatbázis</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/hasznos-informaciok">Hasznos információk</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/kapcsolat">Kapcsolat</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/hirlevelek">Hírlevelek</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/okosfuzet">Okosfüzet</a>
-                    </li>
+                        <div ngbDropdown style="padding: 2px; cursor: pointer;">
+                          <a class="nav-item nav-link" ngbDropdownToggle>Hasznos linkek</a>
+                          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <a ngbDropdownItem class="nav-item nav-link" [routerLink]="['/civil-adatbazis']"
+                              routerLinkActive='active'>Civil adatbázis</a>
+                            <a ngbDropdownItem class="nav-item nav-link" [routerLink]="['/hasznos-informaciok']"
+                              routerLinkActive='active'>Hasznos információk</a>
+                            <a ngbDropdownItem class="nav-item nav-link" [routerLink]="['/hirlevelek']"
+                              routerLinkActive='active'>Hírlevelek</a>
+                            <a ngbDropdownItem class="nav-item nav-link" [routerLink]="['/okosfuzet']"
+                              routerLinkActive='active'>Okosfüzet</a>
+                            <a ngbDropdownItem class="nav-item nav-link" [routerLink]="['/programok']"
+                              routerLinkActive='active'>Programok, események</a>
+                          </div>
+                        </div>
+              
+                      </li>
                 </ul>
             </div>
         </div>
@@ -58,7 +64,10 @@
                 <a class="nav-link" href="/sablon-kezeles/hirlevel">Hírlevelek kezelése</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/sablon-kezeles/okosfuzet">Okosfüzet</a>
+                <a class="nav-link" href="/sablon-kezeles/okosfuzet">Okosfüzet kezelése</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/sablon-kezeles/programok">Programok kezelése</a>
             </li>
             <li class="nav-item" (click)="signOut()">
                 <a class="nav-link">Kilépés</a>

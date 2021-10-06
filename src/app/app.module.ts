@@ -36,6 +36,7 @@ import { HirlevelekComponent } from './components/hirlevelek/hirlevelek.componen
 import { PageTemplateEditorComponent } from './components/private/page-template-editor/page-template-editor.component';
 import { PageTemplateHandlingComponent } from './components/private/page-template-handling/page-template-handling.component';
 import { OkosfuzetComponent } from './components/okosfuzet/okosfuzet.component';
+import { ProgramokComponent } from './components/programok/programok.component';
 
 
 const firebaseConfig = {
@@ -68,7 +69,8 @@ const firebaseConfig = {
     HirlevelekComponent,
     PageTemplateEditorComponent,
     PageTemplateHandlingComponent,
-    OkosfuzetComponent
+    OkosfuzetComponent,
+    ProgramokComponent
   ],
   imports: [
     CommonModule,

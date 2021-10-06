@@ -12,6 +12,7 @@ import { BelepesComponent } from './components/private/belepes/belepes.component
 import { FajlFeltoltesComponent } from './components/private/fajl-feltoltes/fajl-feltoltes.component';
 import { HirekKezeleseComponent } from './components/private/hirek-kezelese/hirek-kezelese.component';
 import { PageTemplateHandlingComponent } from './components/private/page-template-handling/page-template-handling.component';
+import { ProgramokComponent } from './components/programok/programok.component';
 import { UserAgreementComponent } from './components/user-agreement/user-agreement.component';
 import { AuthGuard } from './core/auth.guard';
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'civil-adatbazis', component: CivilAdatbazisComponent },
   { path: 'hirlevelek', component: HirlevelekComponent },
   { path: 'okosfuzet', component: OkosfuzetComponent },
+  { path: 'programok', component: ProgramokComponent },
   { path: 'user-agreement', component: UserAgreementComponent },
   { path: 'hirek-kezelese', component: HirekKezeleseComponent, canActivate: [AuthGuard] },
   { path: 'fajl-feltoltes', component: FajlFeltoltesComponent, canActivate: [AuthGuard] },
