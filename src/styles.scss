@@ -159,3 +159,15 @@ p {
 .hasznos-infok th{
   min-width: 200px;
 }
+.szervezet-table th{
+  cursor: pointer;
+}
+span.order::after{
+  cursor: pointer;
+}
+span.order.asc::after{
+  content: '▲';
+}
+span.order.desc::after{
+  content: '▼';
+}

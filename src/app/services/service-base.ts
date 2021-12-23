@@ -2,7 +2,7 @@ import { AngularFirestoreCollection, AngularFirestore, DocumentReference, Collec
 import { Observable } from 'rxjs';
 import { AngularFireStorage, AngularFireUploadTask, AngularFireStorageReference } from '@angular/fire/storage';
 import { BaseEntity } from '../models/base-entity';
-import { FitlerParameter, OperationType, OrderProperty, SearchParameterBase } from '../models/search-parameter';
+import { FitlerParameter, OperationType, OrderDirection, OrderProperty, SearchParameterBase } from '../models/search-parameter';
 import { map } from 'rxjs/operators';
 
 export class ServiceBase<T extends BaseEntity> {
@@ -20,16 +20,30 @@ export class ServiceBase<T extends BaseEntity> {
     }
 
     getItems(parameters: SearchParameterBase = null): Observable<T[]> {
-        if (parameters) {
-            this.dataStore = this.fireStore
-                .collection(this.entityName, ref => {
-                    let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-                    query = this.order(parameters.order, query);
-                    query = this.filter(parameters.filterServer, query);
-                    return query;
-                });
-        }
-        return this.dataStore.valueChanges();
+        // if (parameters) {
+        //     this.dataStore = this.fireStore
+        //         .collection(this.entityName, ref => {
+        //             let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+        //             // query = this.order(parameters.order, query);
+        //             // query = this.filter(parameters.filterServer, query);
+        //             return query;
+        //         });
+        // }
+        return this.dataStore.valueChanges().pipe(
+            map(entities => {
+                const mapped: T[] = [];
+                for (const entity of entities) {
+                    if (parameters) {
+                        if (this.isMatch(parameters.filterClient, entity)) {
+                            mapped.push(entity);
+                        }
+                    } else {
+                        mapped.push(entity);
+                    }
+                }
+                return this.orderClient(mapped, parameters.order);
+            })
+        );
     }
 
     addItemWithId(item: T): string {
@@ -59,6 +73,32 @@ export class ServiceBase<T extends BaseEntity> {
     }
 
 
+    private orderClient(list: T[], orderList: OrderProperty[]): T[] {
+        if (!orderList) return list;
+        orderList.forEach(order => {
+            list = list.sort((a, b) => { return this.orderClientByProp(a, b, order); })
+        });
+
+        return list;
+    }
+
+    private orderClientByProp(first: T, second: T, order: OrderProperty): number {
+        if (!order) return;
+        var nameA = first[order.property].toString().toUpperCase(); // ignore upper and lowercase
+        var nameB = second[order.property].toString().toUpperCase(); // ignore upper and lowercase
+        var res = 0;
+        if (nameA < nameB) {
+            res = -1;
+        }
+        if (nameA > nameB) {
+            res = 1;
+        }
+        if (order.direction && order.direction == OrderDirection.Asc) {
+            return res;
+        }
+        return res * -1;
+    }
+
     private order(orderList: OrderProperty[], ref: CollectionReference | Query): CollectionReference | Query {
         if (!orderList || orderList.length === 0) { return ref; }
         orderList.forEach(order => {
@@ -67,11 +107,27 @@ export class ServiceBase<T extends BaseEntity> {
         return ref;
     }
 
+    private filterClient(filterList: FitlerParameter[], list: T[]): T[] {
+        if (!filterList || filterList.length === 0) { return list; }
+        filterList.forEach(filter => {
+            if (filter.filterValue) {
+                if (filter.type == OperationType.Contains)
+                    list = list.filter(x => x[filter.filterProperty].contains(filter.filterValue))
+                if (filter.type == OperationType.Equals)
+                    list = list.filter(x => x[filter.filterProperty] == filter.filterValue)
+            }
+        });
+        return list;
+    }
+
     private filter(filterList: FitlerParameter[], ref: CollectionReference | Query): CollectionReference | Query {
         if (!filterList || filterList.length === 0) { return ref; }
         filterList.forEach(filter => {
             if (filter.filterValue) {
-                ref = ref.where(filter.filterProperty, '==', filter.filterValue);
+                // if (filter.type == OperationType.Contains)
+                //     ref = ref.where(filter.filterProperty, 'array-contains', filter.filterValue);
+                if (filter.type == OperationType.Equals)
+                    ref = ref.where(filter.filterProperty, '==', filter.filterValue);
             }
         });
         return ref;
@@ -98,8 +154,8 @@ export class ServiceBase<T extends BaseEntity> {
                     }
                 }
                 if (filterEl.type === OperationType.Contains as OperationType) {
-                    const stringProperty = data[filterEl.filterProperty] as string;
-                    if (!stringProperty.includes(filterEl.filterValue)) {
+                    const stringProperty = data[filterEl.filterProperty].toString().toLowerCase();
+                    if (!stringProperty.includes(filterEl.filterValue.toLowerCase())) {
                         result = false;
                     }
                 }
