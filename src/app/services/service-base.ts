@@ -84,11 +84,19 @@ export class ServiceBase<T extends BaseEntity> {
 
     private orderClientByProp(first: T, second: T, order: OrderProperty): number {
         if (!order) return;
-
-        if (order.direction && order.direction == OrderDirection.Asc) {
-            return first[order.property] - second[order.property];
+        var nameA = first[order.property].toString().toUpperCase(); // ignore upper and lowercase
+        var nameB = second[order.property].toString().toUpperCase(); // ignore upper and lowercase
+        var res = 0;
+        if (nameA < nameB) {
+            res = -1;
         }
-        return second[order.property] - first[order.property];
+        if (nameA > nameB) {
+            res = 1;
+        }
+        if (order.direction && order.direction == OrderDirection.Asc) {
+            return res;
+        }
+        return res * -1;
     }
 
     private order(orderList: OrderProperty[], ref: CollectionReference | Query): CollectionReference | Query {
@@ -146,8 +154,8 @@ export class ServiceBase<T extends BaseEntity> {
                     }
                 }
                 if (filterEl.type === OperationType.Contains as OperationType) {
-                    const stringProperty = data[filterEl.filterProperty] as string;
-                    if (!stringProperty.includes(filterEl.filterValue)) {
+                    const stringProperty = data[filterEl.filterProperty].toString().toLowerCase();
+                    if (!stringProperty.includes(filterEl.filterValue.toLowerCase())) {
                         result = false;
                     }
                 }

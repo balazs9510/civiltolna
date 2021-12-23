@@ -1,0 +1,211 @@
+<h2>Kereső</h2>
+<div>
+    <form (keydown.enter)="search()">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="form-group">
+                    <label for="azonositoSearch">Azonosító szám</label>
+                    <input type="text" class="form-control" id="azonositoSearch" name="azonosito"
+                        [(ngModel)]="searchParamters.filterClient[0].filterValue">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="form-group">
+                    <label for="nevSearch">Név</label>
+                    <input type="text" class="form-control" id="nevSearch" name="nev"
+                        [(ngModel)]="searchParamters.filterClient[1].filterValue">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="form-group">
+                    <label for="szemelySearch">Elnök, titkár</label>
+                    <input type="text" class="form-control" id="szemelySearch" name="szemely"
+                        [(ngModel)]="searchParamters.filterClient[2].filterValue">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="form-group">
+                    <label for="irSearch">Irányítószám</label>
+                    <input type="text" class="form-control" id="irSearch" name="ir"
+                        [(ngModel)]="searchParamters.filterClient[3].filterValue">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="form-group">
+                    <label for="varosSearch">Helység</label>
+                    <input type="text" class="form-control" id="varosSearch" name="varos"
+                        [(ngModel)]="searchParamters.filterClient[4].filterValue">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="form-group">
+                    <label for="cimSearch">Cím</label>
+                    <input type="text" class="form-control" id="cimSearch" name="cim"
+                        [(ngModel)]="searchParamters.filterClient[5].filterValue">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="form-group">
+                    <label for="elerhetosegSearch">E-mail</label>
+                    <input type="text" class="form-control" id="elerhetosegSearch" name="elerhetoseg"
+                        [(ngModel)]="searchParamters.filterClient[6].filterValue">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="form-group">
+                    <label for="foSearch">Fő tevékenység</label>
+                    <input type="text" class="form-control" id="foSearch" name="fo"
+                        [(ngModel)]="searchParamters.filterClient[7].filterValue">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-success" type="button" (click)="search()">Keresés</button>
+        <i class="material-icons" (click)="fullscreen(full)" style="cursor: pointer;">fullscreen</i>
+
+    </form>
+    <div class="mt-1">
+        <div class="table-responsive szervezet-table">
+            <table class="table table-bordered">
+                <thead>
+                    <th (click)="order('azonosito')">Azonosító szám<span [class]="orderClass('azonosito')"></span></th>
+                    <th (click)="order('nev')">Név<span [class]="orderClass('nev')"></span></th>
+                    <th (click)="order('szemely')">Elnök, titkár<span [class]="orderClass('szemely')"></span></th>
+                    <th (click)="order('iranyitoszam')">Irányítószám<span [class]="orderClass('iranyitoszam')"></span></th>
+                    <th (click)="order('varos')">Helység<span [class]="orderClass('varos')"></span></th>
+                    <th (click)="order('cim')">Cím<span [class]="orderClass('cim')"></span></th>
+                    <th (click)="order('elerhetoseg')">E-mail<span [class]="orderClass('elerhetoseg')"></span></th>
+                    <th (click)="order('tevekenyseg')">Fő tevékenység<span [class]="orderClass('tevekenyseg')"></span></th>
+                </thead>
+                <tbody *ngIf="szervezetek && szervezetek.length > 0 else noMatch">
+                    <tr *ngFor="let szervezet of szervezetek | paginate: { itemsPerPage: 5, currentPage: p }">
+                        <td>{{szervezet.azonosito}}</td>
+                        <td>{{szervezet.nev}}</td>
+                        <td>{{szervezet.szemely}}</td>
+                        <td>{{szervezet.iranyitoszam}}</td>
+                        <td>{{szervezet.varos}}</td>
+                        <td>{{szervezet.cim}}</td>
+                        <td>
+                            <a *ngFor="let email of splittedEmails(szervezet)" href="mailto:{{email}}">{{email}}</a>
+                        </td>
+                        <td>{{szervezet.tevekenyseg}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="my-pagination">
+            <pagination-controls (pageChange)="p = $event" previousLabel="Előző" nextLabel="Következő">
+            </pagination-controls>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <tr *ngIf="szervezetek.length > 0; else noMatch ">
+        <td colspan="6">Keresés...</td>
+    </tr>
+</ng-template>
+<ng-template #noMatch>
+    <tr>
+        <td colspan="8">Nincs találat.</td>
+    </tr>
+</ng-template>
+
+<ng-template #full>
+    <div style="padding: 10px;">
+        <form (keydown.enter)="search()">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="form-group">
+                        <label for="azonositoSearch">Azonosító szám</label>
+                        <input type="text" class="form-control" id="azonositoSearch" name="azonosito"
+                            [(ngModel)]="searchParamters.filterClient[0].filterValue">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="form-group">
+                        <label for="nevSearch">Név</label>
+                        <input type="text" class="form-control" id="nevSearch" name="nev"
+                            [(ngModel)]="searchParamters.filterClient[1].filterValue">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="form-group">
+                        <label for="szemelySearch">Elnök, titkár</label>
+                        <input type="text" class="form-control" id="szemelySearch" name="szemely"
+                            [(ngModel)]="searchParamters.filterClient[2].filterValue">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="form-group">
+                        <label for="irSearch">Irányítószám</label>
+                        <input type="text" class="form-control" id="irSearch" name="ir"
+                            [(ngModel)]="searchParamters.filterClient[3].filterValue">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="form-group">
+                        <label for="varosSearch">Helység</label>
+                        <input type="text" class="form-control" id="varosSearch" name="varos"
+                            [(ngModel)]="searchParamters.filterClient[4].filterValue">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="form-group">
+                        <label for="cimSearch">Cím</label>
+                        <input type="text" class="form-control" id="cimSearch" name="cim"
+                            [(ngModel)]="searchParamters.filterClient[5].filterValue">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="form-group">
+                        <label for="elerhetosegSearch">E-mail</label>
+                        <input type="text" class="form-control" id="elerhetosegSearch" name="elerhetoseg"
+                            [(ngModel)]="searchParamters.filterClient[6].filterValue">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="form-group">
+                        <label for="foSearch">Fő tevékenység</label>
+                        <input type="text" class="form-control" id="foSearch" name="fo"
+                            [(ngModel)]="searchParamters.filterClient[7].filterValue">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-success" type="button" (click)="search()">Keresés</button>
+        </form>
+        <div class="mt-1">
+            <div class="table-responsive szervezet-table">
+                <table class="table table-bordered">
+                    <thead>
+                        <th (click)="order('azonosito')">Azonosító szám<span [class]="orderClass('azonosito')"></span></th>
+                        <th (click)="order('nev')">Név<span [class]="orderClass('nev')"></span></th>
+                        <th (click)="order('szemely')">Elnök, titkár<span [class]="orderClass('szemely')"></span></th>
+                        <th (click)="order('iranyitoszam')">Irányítószám<span [class]="orderClass('iranyitoszam')"></span></th>
+                        <th (click)="order('varos')">Helység<span [class]="orderClass('varos')"></span></th>
+                        <th (click)="order('cim')">Cím<span [class]="orderClass('cim')"></span></th>
+                        <th (click)="order('elerhetoseg')">E-mail<span [class]="orderClass('elerhetoseg')"></span></th>
+                        <th (click)="order('tevekenyseg')">Fő tevékenység<span [class]="orderClass('tevekenyseg')"></span></th>
+                    </thead>
+                    <tbody *ngIf="szervezetek && szervezetek.length > 0 else noMatch">
+                        <tr *ngFor="let szervezet of szervezetek | paginate: { itemsPerPage: 5, currentPage: p }">
+                            <td>{{szervezet.azonosito}}</td>
+                            <td>{{szervezet.nev}}</td>
+                            <td>{{szervezet.szemely}}</td>
+                            <td>{{szervezet.iranyitoszam}}</td>
+                            <td>{{szervezet.varos}}</td>
+                            <td>{{szervezet.cim}}</td>
+                            <td>
+                                <a *ngFor="let email of splittedEmails(szervezet)" href="mailto:{{email}}">{{email}}</a>
+                            </td>
+                            <td>{{szervezet.tevekenyseg}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="my-pagination">
+                <pagination-controls (pageChange)="p = $event" previousLabel="Előző" nextLabel="Következő">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
+</ng-template>

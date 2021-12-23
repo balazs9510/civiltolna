@@ -9,44 +9,10 @@ import { SzervezetService } from 'src/app/services/szervezet.service';
   templateUrl: './civil-adatbazis.component.html',
 })
 export class CivilAdatbazisComponent implements OnInit {
-  searchParamters: SearchParameterBase = {
-    order: [{ property: 'azonosito', direction: OrderDirection.Desc }],
-    filterClient: [
-      {
-        filterProperty: 'azonosito',
-        type: OperationType.Contains,
-      },
-      {
-        filterProperty: 'nev',
-        type: OperationType.Contains,
-      },
-      {
-        filterProperty: 'varos',
-        type: OperationType.Contains,
-      },
-      {
-        filterProperty: 'cim',
-        type: OperationType.Contains,
-      },
-      {
-        filterProperty: 'szemely',
-        type: OperationType.Contains,
-      },
-      {
-        filterProperty: 'elerhetoseg',
-        type: OperationType.Contains,
-      }
-    ]
-  };
-  $szervezetek: Observable<Szervezet[]>;
-  p: any;
-  constructor(private service: SzervezetService) { }
+
+  constructor() { }
 
   ngOnInit() {
-    this.search();
   }
 
-  search() {
-    this.$szervezetek = this.service.getItems(this.searchParamters);
-  }
 }

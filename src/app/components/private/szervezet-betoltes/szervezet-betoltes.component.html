@@ -1,1 +1,23 @@
-<p>szervezet-betoltes works!</p>
+<h2>Szervezetek betöltése</h2>
+
+<input type="file" name="szervezetekFile" id="szervezetekFile" accept=".xlsx" (change)="onFileChange($event)">
+<button class="btn btn-success" (click)="open(delete_modal)"
+    [disabled]="!(szervezetek && szervezetek.length > 0)">Betöltés</button>
+
+<ng-template #delete_modal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Törlés</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <p>Biztos, hogy betöltöd a szervezeteket? Az eddigi adatok nem törlődnek.</p>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="modal.close('Save click'); import()">Betöltés</button>
+        <button type="button" class="btn btn-danger" (click)="modal.close('')">Mégse</button>
+    </div>
+</ng-template>

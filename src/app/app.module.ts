@@ -38,6 +38,7 @@ import { PageTemplateHandlingComponent } from './components/private/page-templat
 import { OkosfuzetComponent } from './components/okosfuzet/okosfuzet.component';
 import { ProgramokComponent } from './components/programok/programok.component';
 import { SzervezetBetoltesComponent } from './components/private/szervezet-betoltes/szervezet-betoltes.component';
+import { KeresoComponent } from './components/civil-adatbazis/kereso/kereso.component';
 
 
 const firebaseConfig = {
@@ -72,7 +73,8 @@ const firebaseConfig = {
     PageTemplateHandlingComponent,
     OkosfuzetComponent,
     ProgramokComponent,
-    SzervezetBetoltesComponent
+    SzervezetBetoltesComponent,
+    KeresoComponent
   ],
   imports: [
     CommonModule,
