@@ -41,7 +41,11 @@ export class ServiceBase<T extends BaseEntity> {
                         mapped.push(entity);
                     }
                 }
-                return this.orderClient(mapped, parameters.order);
+                var order = null;
+                if (parameters && parameters.order){
+                    order = parameters.order;
+                }
+                return this.orderClient(mapped, order);
             })
         );
     }
