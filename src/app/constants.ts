@@ -7,11 +7,13 @@ export class Constants {
     public static readonly HasznosInformaciokPageId = "hasznos-informaciok";
     public static readonly OkosFuzetPageId = "okosfuzet";
     public static readonly ProgramokPageId = "programok";
+    public static readonly MintaszabalyokPageId = "mintaszabalyok";
 
     public static readonly PageIdTilteMapping = {
         "hirlevel" : 'Hírlevelek kezelése',
         "hasznos-informaciok": 'Hasznos információk kezelése',
         "okosfuzet" : "Okosfüzet",
-        "programok" : "Programok, események"
+        "programok" : "Programok, események",
+        "mintaszabalyok": "Mintaszabályok"
     }
 }

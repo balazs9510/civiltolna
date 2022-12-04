@@ -39,6 +39,7 @@ import { OkosfuzetComponent } from './components/okosfuzet/okosfuzet.component';
 import { ProgramokComponent } from './components/programok/programok.component';
 import { SzervezetBetoltesComponent } from './components/private/szervezet-betoltes/szervezet-betoltes.component';
 import { KeresoComponent } from './components/civil-adatbazis/kereso/kereso.component';
+import { MintaSzabalyzatokComponent } from './components/minta-szabalyzatok/minta-szabalyzatok.component';
 
 
 const firebaseConfig = {
@@ -74,7 +75,8 @@ const firebaseConfig = {
     OkosfuzetComponent,
     ProgramokComponent,
     SzervezetBetoltesComponent,
-    KeresoComponent
+    KeresoComponent,
+    MintaSzabalyzatokComponent
   ],
   imports: [
     CommonModule,
