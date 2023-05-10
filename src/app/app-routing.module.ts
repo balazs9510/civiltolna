@@ -17,6 +17,7 @@ import { SzervezetBetoltesComponent } from './components/private/szervezet-betol
 import { ProgramokComponent } from './components/programok/programok.component';
 import { UserAgreementComponent } from './components/user-agreement/user-agreement.component';
 import { AuthGuard } from './core/auth.guard';
+import { PalyazatokComponent } from './components/palyazatok/palyazatok.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'okosfuzet', component: OkosfuzetComponent },
   { path: 'programok', component: ProgramokComponent },
   { path: 'minta-szabalyzatok', component: MintaSzabalyzatokComponent },
+  { path: 'palyazatok', component: PalyazatokComponent },
   { path: 'user-agreement', component: UserAgreementComponent },
   { path: 'hirek-kezelese', component: HirekKezeleseComponent, canActivate: [AuthGuard] },
   { path: 'fajl-feltoltes', component: FajlFeltoltesComponent, canActivate: [AuthGuard] },
