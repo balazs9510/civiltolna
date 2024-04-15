@@ -44,6 +44,8 @@
                                     routerLinkActive='active'>Mintaszabályzatok</a>
                                 <a ngbDropdownItem class="nav-item nav-link" [routerLink]="['/palyazatok']"
                                     routerLinkActive='active'>Pályázatok</a>
+                                <a ngbDropdownItem class="nav-item nav-link" [routerLink]="['/civil-referensek']"
+                                    routerLinkActive='active'>Civil referensek</a>
                             </div>
                         </div>
 
@@ -81,6 +83,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/szervezet-betoltes">Szervezetek betöltése</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/sablon-kezeles/civil-referensek">Civil referensek</a>
             </li>
             <li class="nav-item" (click)="signOut()">
                 <a class="nav-link">Kilépés</a>

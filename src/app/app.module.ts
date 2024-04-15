@@ -41,6 +41,7 @@ import { SzervezetBetoltesComponent } from './components/private/szervezet-betol
 import { KeresoComponent } from './components/civil-adatbazis/kereso/kereso.component';
 import { MintaSzabalyzatokComponent } from './components/minta-szabalyzatok/minta-szabalyzatok.component';
 import { PalyazatokComponent } from './components/palyazatok/palyazatok.component';
+import { CivilReferensekComponent } from './components/civil-referensek/civil-referensek.component';
 
 
 const firebaseConfig = {
@@ -78,7 +79,8 @@ const firebaseConfig = {
     SzervezetBetoltesComponent,
     KeresoComponent,
     MintaSzabalyzatokComponent,
-    PalyazatokComponent
+    PalyazatokComponent,
+    CivilReferensekComponent
   ],
   imports: [
     CommonModule,
