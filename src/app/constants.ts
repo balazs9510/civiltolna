@@ -10,6 +10,7 @@ export class Constants {
     public static readonly MintaszabalyokPageId = "mintaszabalyok";
     public static readonly PalyazatokPageId = "palyazatok";
     public static readonly CivilReferensekPageId = "civil-referensek";
+    public static readonly JotekonysagiProgramok = "jotekonysagi-programok";
 
     public static readonly PageIdTilteMapping = {
         "hirlevel" : 'Hírlevelek kezelése',
@@ -18,6 +19,7 @@ export class Constants {
         "programok" : "Programok, események",
         "mintaszabalyok": "Mintaszabályok",
         "palyazatok": "Pályázatok",
-        "civil-referensek": "Civil referensek"
+        "civil-referensek": "Civil referensek",
+        "jotekonysagi-programok": "Jótékonysági programok"
     }
 }

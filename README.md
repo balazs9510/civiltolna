@@ -15,3 +15,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 7. Open in admin mode, update and check if it is working or not
 
 
+## Setup environment
+
+1. Download https://github.com/coreybutler/nvm-windows/releases nvm
+2. nvm install 16
+   nvm use 16
+3. npm run install -> this will install with legacy deps   

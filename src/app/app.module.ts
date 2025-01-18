@@ -42,6 +42,7 @@ import { KeresoComponent } from './components/civil-adatbazis/kereso/kereso.comp
 import { MintaSzabalyzatokComponent } from './components/minta-szabalyzatok/minta-szabalyzatok.component';
 import { PalyazatokComponent } from './components/palyazatok/palyazatok.component';
 import { CivilReferensekComponent } from './components/civil-referensek/civil-referensek.component';
+import { JotekonysagiProgramokComponent } from './components/jotekonysagi-programok/jprogramok.component';
 
 
 const firebaseConfig = {
@@ -80,7 +81,8 @@ const firebaseConfig = {
     KeresoComponent,
     MintaSzabalyzatokComponent,
     PalyazatokComponent,
-    CivilReferensekComponent
+    CivilReferensekComponent,
+    JotekonysagiProgramokComponent
   ],
   imports: [
     CommonModule,

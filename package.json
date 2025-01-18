@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod=\"true\" && firebase deploy"
+    "deploy": "ng build --prod=\"true\" && firebase deploy",
+    "install": "npm install --legacy-peer-deps"
   },
   "private": true,
   "dependencies": {
