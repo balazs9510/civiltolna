@@ -20,6 +20,7 @@ import { AuthGuard } from "./core/auth.guard";
 import { PalyazatokComponent } from "./components/palyazatok/palyazatok.component";
 import { CivilReferensekComponent } from "./components/civil-referensek/civil-referensek.component";
 import { JotekonysagiProgramokComponent } from "./components/jotekonysagi-programok/jprogramok.component";
+import { PetofiProgramComponent } from "./components/petofi-program/petofiProgram.component";
 
 const routes: Routes = [
   { path: "", component: HirekComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: "palyazatok", component: PalyazatokComponent },
   { path: "civil-referensek", component: CivilReferensekComponent },
   { path: "jotekonysagi-programok", component: JotekonysagiProgramokComponent },
+  { path: "petofi-program", component: PetofiProgramComponent },
   { path: "user-agreement", component: UserAgreementComponent },
   {
     path: "hirek-kezelese",
